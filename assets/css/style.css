@@ -1,0 +1,201 @@
+*,
+::before,
+::after {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  min-height: 100vh;
+  scroll-behavior: smooth;
+  text-rendering: optimizeSpeed;
+  line-height: 1;
+  font-family: "League Spartan", sans-serif;
+  font-weight: 700;
+  font-size: 32px;
+  background: var(--bg-main);
+  color: var(--text-body);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  -webkit-user-select: none;
+  user-select: none;
+  transition: background 300ms ease-in-out, color 300ms ease-in-out;
+}
+
+img {
+  max-width: 100%;
+  display: block;
+}
+
+input,
+button,
+textarea,
+select {
+  font: inherit;
+}
+
+button {
+  background: transparent;
+  border: none;
+  padding: 0;
+  margin: 0;
+  font-family: inherit;
+  font-size: inherit;
+  cursor: pointer;
+  line-height: inherit;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+}
+
+:root {
+  --bg-main: hsl(222, 26%, 31%);
+  --bg-toggle: hsl(223, 31%, 20%);
+  --bg-screen: hsl(224, 36%, 15%);
+  --key-toggle-equal: hsl(6, 63%, 50%);
+  --key-toggle-equal-hover: hsl(7, 93%, 66%);
+  --key-toggle-equal-shadow: hsl(6, 70%, 34%);
+  --key-reset-delete: hsl(225, 21%, 49%);
+  --key-reset-delete-hover: hsl(224, 51%, 76%);
+  --key-reset-delete-shadow: hsl(224, 28%, 35%);
+  --key-num-operator: hsl(30, 25%, 89%);
+  --key-num-operator-hover: hsl(0, 0%, 100%);
+  --key-num-operator-shadow: hsl(28, 16%, 65%);
+  --text-white: hsl(0, 0%, 100%);
+  --text-body: hsl(0, 0%, 100%);
+  --text-num: hsl(221, 14%, 31%);
+}
+
+.calculator {
+  width: 100%;
+  max-width: 400px;
+  padding: 16px;
+}
+
+.display {
+  background: var(--bg-screen);
+  border-radius: 12px;
+  padding: 24px 16px 16px;
+  margin-bottom: 16px;
+  transition: background 300ms ease-in-out;
+}
+
+.result {
+  color: var(--text-body);
+  text-align: right;
+  font-size: 56px;
+  letter-spacing: -0.015em;
+  width: 100%;
+  border: none;
+  outline: none;
+  background: transparent;
+  padding: 0;
+  cursor: auto;
+}
+
+.keypad-container {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  grid-template-rows: repeat(5, 1fr);
+  gap: 16px 12px;
+  background: var(--bg-toggle);
+  border-radius: 12px;
+  padding: 24px;
+  transition: background 300ms ease-in-out;
+}
+
+.keypad-container button {
+  border-radius: 10px;
+  transition: background 300ms ease-in-out, color 300ms ease-in-out;
+}
+
+.num-btn,
+.operator-btn {
+  width: 100%;
+  padding: 10px 0;
+  background: var(--key-num-operator);
+  font-size: 40px;
+  letter-spacing: -0.02em;
+  color: var(--text-num);
+  box-shadow: 0px 5px 0px 0px var(--key-num-operator-shadow);
+}
+
+.num-btn:hover,
+.operator-btn:hover {
+  background: var(--key-num-operator-hover);
+}
+
+.reset-btn {
+  grid-column-start: 1;
+  grid-column-end: 3;
+}
+
+.equal-btn {
+  grid-column-start: 3;
+  grid-column-end: 5;
+  font-size: 40px;
+  background: var(--key-toggle-equal);
+  color: var(--text-white);
+  box-shadow: 0px 5px 0px 0px var(--key-toggle-equal-shadow);
+}
+
+.equal-btn:hover {
+  background: var(--key-toggle-equal-hover);
+}
+
+.reset-btn,
+.delete-btn {
+  font-size: 28px;
+  background: var (--key-reset-delete);
+  color: var(--text-white);
+  box-shadow: 0px 5px 0px 0px var(--key-reset-delete-shadow);
+}
+
+.keypad-container button:active {
+  transform: translateY(5px);
+  box-shadow: 0px 0px 0px 0px var(--key-reset-delete-shadow);
+  transition: transform 100ms ease-in, box-shadow 100ms ease-in;
+}
+
+.reset-btn:hover,
+.delete-btn:hover {
+  background: var(--key-reset-delete-hover);
+}
+
+@media only screen and (max-width: 480px) {
+  .display {
+    padding: 24px;
+  }
+
+  .result {
+    font-size: 40px;
+  }
+
+  .keypad-container {
+    gap: 16px 12px;
+  }
+
+  .num-btn,
+  .equal-btn {
+    font-size: 32px;
+    padding: 14px 0;
+  }
+
+  .reset-btn,
+  .delete-btn {
+    font-size: 20px;
+  }
+}
